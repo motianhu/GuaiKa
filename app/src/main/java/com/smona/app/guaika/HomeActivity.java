@@ -2,12 +2,20 @@ package com.smona.app.guaika;
 
 import android.annotation.TargetApi;
 import android.os.Build;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
 import com.readystatesoftware.systembartint.SystemBarTintManager;
+import com.smona.app.guaika.factory.FragmentFactory;
+import com.smona.app.guaika.fragment.BaseFragment;
+import com.smona.app.guaika.fragment.NameFragment;
+import com.smona.app.guaika.http.DataType;
+
+import butterknife.ButterKnife;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -15,7 +23,9 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        ButterKnife.bind(this);
         setTranslucentStatus(true);
+        init();
     }
 
     @TargetApi(19)
@@ -35,5 +45,18 @@ public class HomeActivity extends AppCompatActivity {
         tintManager.setStatusBarTintColor(getResources().getColor(R.color.colorPrimary));
         tintManager.setStatusBarTintEnabled(true);
         tintManager.setNavigationBarTintEnabled(true);
+    }
+
+    private void init() {
+        BaseFragment fragment = FragmentFactory.createMainFragment(DataType.IFENG);
+        switchFragment(fragment);
+    }
+
+    private void switchFragment(Fragment fragment) {
+        setTitle(((NameFragment)fragment).getName());
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.content_main, fragment);
+        fragmentTransaction.commit();
+
     }
 }
