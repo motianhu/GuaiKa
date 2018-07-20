@@ -48,7 +48,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void init() {
-        BaseFragment fragment = FragmentFactory.createMainFragment(DataType.IFENG);
+        BaseFragment fragment = FragmentFactory.createTabFragment();
         switchFragment(fragment);
     }
 

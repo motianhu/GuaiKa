@@ -1,7 +1,7 @@
 package com.smona.app.guaika.http.parse;
 
 import com.smona.app.guaika.bean.VideoData;
-import com.smona.app.guaika.bean.VideoTabData;
+import com.smona.app.guaika.bean.TabData;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -12,5 +12,5 @@ public interface ResultParse {
 
     List<VideoData> parse(JSONObject json) throws JSONException;
 
-    List<VideoTabData> parseTab(JSONObject json) throws JSONException;
+    List<TabData> parseTab(JSONObject json) throws JSONException;
 }

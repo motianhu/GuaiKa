@@ -14,13 +14,11 @@ public class IFengVideoPresenter extends VideoPresenter {
     private static final int LOADMORE_SIZE = 20;
 
     public IFengVideoPresenter(int tabId) {
-
         mTabId = tabId;
     }
 
     @Override
     public Observable<String> getHttpCallObservable(int curPage) {
-
         DataKeeper.saveCurrentTabId(mTabId);
         if(curPage == 1) {
             return RetrofitFactory.getIFengVideoService().refreshVideos(mTabId, REFRESH_SIZE, String.valueOf(System.currentTimeMillis()));
@@ -34,6 +32,6 @@ public class IFengVideoPresenter extends VideoPresenter {
 
     @Override
     public DataType getType() {
-        return DataType.IFENG;
+        return DataType.HOME;
     }
 }

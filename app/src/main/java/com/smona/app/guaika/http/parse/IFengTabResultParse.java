@@ -2,7 +2,7 @@ package com.smona.app.guaika.http.parse;
 
 import com.smona.app.guaika.bean.IFengInfo;
 import com.smona.app.guaika.bean.VideoData;
-import com.smona.app.guaika.bean.VideoTabData;
+import com.smona.app.guaika.bean.TabData;
 import com.smona.app.guaika.http.DataType;
 import com.smona.app.guaika.util.DataKeeper;
 import com.smona.app.guaika.util.Utils;
@@ -47,7 +47,7 @@ public class IFengTabResultParse implements ResultParse {
                 continue;
             }
             VideoData videoData = new VideoData();
-            videoData.setDataType(DataType.IFENG.value());
+            videoData.setDataType(DataType.HOME.value());
             videoData.setId(item.optString(KEY_DATA_ID));
             videoData.setTitle(item.optString(KEY_DATA_TITLE));
 
@@ -70,9 +70,9 @@ public class IFengTabResultParse implements ResultParse {
     }
 
     @Override
-    public List<VideoTabData> parseTab(JSONObject json) throws JSONException {
+    public List<TabData> parseTab(JSONObject json) throws JSONException {
 
-        List<VideoTabData> list = new ArrayList<>();
+        List<TabData> list = new ArrayList<>();
 
         JSONArray array = json.getJSONArray(KEY_TAB_LIST);
         JSONObject item;
@@ -80,7 +80,7 @@ public class IFengTabResultParse implements ResultParse {
             item = array.getJSONObject(i);
             int tabId = item.optInt(KEY_TAB_ID);
             String tabName = item.optString(KEY_TAB_NAME);
-            list.add(new VideoTabData(tabId, tabName, DataType.IFENG.value()));
+            list.add(new TabData(tabId, tabName, DataType.HOME.value()));
         }
         return list;
     }

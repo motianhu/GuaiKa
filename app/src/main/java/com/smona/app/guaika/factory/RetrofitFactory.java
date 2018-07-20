@@ -17,7 +17,6 @@ public class RetrofitFactory {
     private static volatile IFengApi sIFengService;
 
     public static IFengApi getIFengVideoService() {
-
         if(sIFengService == null) {
             synchronized (RetrofitFactory.class) {
                 if(sIFengService == null) {
@@ -29,7 +28,6 @@ public class RetrofitFactory {
     }
 
     private static IFengApi createIFengService() {
-
         OkHttpClient client = new OkHttpClient.Builder()
                 .connectTimeout(TIME_OUT, TimeUnit.SECONDS)
                 .readTimeout(TIME_OUT, TimeUnit.SECONDS)
