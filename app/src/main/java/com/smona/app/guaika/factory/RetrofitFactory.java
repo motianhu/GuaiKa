@@ -16,18 +16,18 @@ public class RetrofitFactory {
     private static final String IFENG_BASE_URL = "http://vcis.ifeng.com/";
     private static volatile IFengApi sIFengService;
 
-    public static IFengApi getIFengVideoService() {
+    public static IFengApi getVideoService() {
         if(sIFengService == null) {
             synchronized (RetrofitFactory.class) {
                 if(sIFengService == null) {
-                    sIFengService = createIFengService();
+                    sIFengService = createService();
                 }
             }
         }
         return sIFengService;
     }
 
-    private static IFengApi createIFengService() {
+    private static IFengApi createService() {
         OkHttpClient client = new OkHttpClient.Builder()
                 .connectTimeout(TIME_OUT, TimeUnit.SECONDS)
                 .readTimeout(TIME_OUT, TimeUnit.SECONDS)

@@ -1,6 +1,10 @@
 package com.smona.app.guaika.bean;
 
-public class TabData {
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+public class TabData implements Serializable {
     private int type;
     private int tabId;
     private String tabName;
@@ -21,5 +25,14 @@ public class TabData {
 
     public int getType() {
         return type;
+    }
+
+    public static List<TabData> createTabDatas() {
+        List<TabData> tabs = new ArrayList<TabData>();
+        TabData tabData = new TabData(20,"首页",20 );
+        tabs.add(tabData);
+        tabData = new TabData(26,"分类",26 );
+        tabs.add(tabData);
+        return tabs;
     }
 }

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -35,7 +36,6 @@ public abstract class VideoFragment extends
 
     @Override
     public View getContentView(LayoutInflater inflater, @Nullable Bundle savedInstanceState) {
-
         View view = inflater.inflate(R.layout.fragment_video, null);
         ButterKnife.bind(this, view);
 
@@ -45,7 +45,6 @@ public abstract class VideoFragment extends
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-
                 loadData(true);
             }
         });
@@ -55,14 +54,12 @@ public abstract class VideoFragment extends
 
     @Override
     public void loadData(boolean pullToRefresh) {
-
         showLoading(pullToRefresh);
         presenter.refreshData(pullToRefresh);
     }
 
     @Override
     public void showLoadMoreErrorView() {
-
         if(mFooterView.getVisibility() == View.VISIBLE) {
             mFooterView.setVisibility(View.GONE);
         }
@@ -70,7 +67,6 @@ public abstract class VideoFragment extends
 
     @Override
     public void showLoadMoreView() {
-
         if(mFooterView.getVisibility() == View.GONE) {
             mFooterView.setVisibility(View.VISIBLE);
         }
@@ -79,7 +75,6 @@ public abstract class VideoFragment extends
 
     @Override
     public void setData(List<VideoData> data) {
-
         if (mVideoAdapter == null) {
             mVideoAdapter = new VideoAdapter(mContext, data);
             mVideoAdapter.enableFooterView();
@@ -93,20 +88,17 @@ public abstract class VideoFragment extends
 
     @Override
     public void setLoadMoreData(List<VideoData> videos) {
-
         mVideoAdapter.addAll(videos);
     }
 
     @Override
     public void onLoadMore() {
-
         showLoadMoreView();
         presenter.loadMoreData();
     }
 
     @Override
     public void showLoading(boolean pullToRefresh) {
-
         super.showLoading(pullToRefresh);
         if(pullToRefresh) {
             mSwipeRefreshLayout.setRefreshing(true);
@@ -115,14 +107,12 @@ public abstract class VideoFragment extends
 
     @Override
     public void showContent() {
-
         super.showContent();
         mSwipeRefreshLayout.setRefreshing(false);
     }
 
     @Override
     public void showError(Throwable e, boolean pullToRefresh) {
-
         super.showError(e, pullToRefresh);
         if(pullToRefresh) {
             mSwipeRefreshLayout.setRefreshing(false);
@@ -131,7 +121,6 @@ public abstract class VideoFragment extends
 
     @Override
     public void onDestroyView() {
-
         super.onDestroyView();
         mVideoAdapter = null;
         PlayerManager.getInstance().stop();

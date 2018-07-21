@@ -27,7 +27,6 @@ public abstract class BaseFragment<CV extends View, M, V extends MvpLceView<M>, 
 
     @Override
     public void onAttach(Context context) {
-
         super.onAttach(context);
         mContext = context;
     }
@@ -35,17 +34,13 @@ public abstract class BaseFragment<CV extends View, M, V extends MvpLceView<M>, 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
         ViewGroup view = (ViewGroup) inflater.inflate(R.layout.base_fragment_layout, container, false);
-
         view.addView(getContentView(inflater, savedInstanceState));
-
         return view;
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-
         super.onViewCreated(view, savedInstanceState);
         showLoading(false);
         if(isInitRefreshEnable() && isDelayRefreshEnable() == false) {
@@ -55,7 +50,6 @@ public abstract class BaseFragment<CV extends View, M, V extends MvpLceView<M>, 
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
-
         super.setUserVisibleHint(isVisibleToUser);
         if(isVisibleToUser && isInitRefreshEnable() == false && isDelayRefreshEnable() && mIsInited == false) {
             mIsInited = true;
@@ -64,7 +58,6 @@ public abstract class BaseFragment<CV extends View, M, V extends MvpLceView<M>, 
     }
 
     private void refreshData(final boolean pullToRefresh) {
-
         if(presenter != null) {
             loadData(pullToRefresh);
         } else {
@@ -88,24 +81,20 @@ public abstract class BaseFragment<CV extends View, M, V extends MvpLceView<M>, 
     public abstract View getContentView(LayoutInflater inflater, @Nullable Bundle savedInstanceState);
 
     public boolean isInitRefreshEnable() {
-
         return true;
     }
 
     public boolean isDelayRefreshEnable() {
-
         return false;
     }
 
     @Override
     protected String getErrorMessage(Throwable e, boolean pullToRefresh) {
-
         return getActivity().getString(R.string.load_failed);
     }
 
     @Override
     public void showLoading(boolean pullToRefresh) {
-
         super.showLoading(pullToRefresh);
         if(!pullToRefresh) {
             ((LoadingView)loadingView).start();
@@ -114,14 +103,12 @@ public abstract class BaseFragment<CV extends View, M, V extends MvpLceView<M>, 
 
     @Override
     public void showContent() {
-
         super.showContent();
         ((LoadingView)loadingView).stop();
     }
 
     @Override
     public void showError(Throwable e, boolean pullToRefresh) {
-
         super.showError(e, pullToRefresh);
         if(!pullToRefresh) {
             ((LoadingView)loadingView).stop();
@@ -130,7 +117,6 @@ public abstract class BaseFragment<CV extends View, M, V extends MvpLceView<M>, 
 
     @Override
     public void onDestroyView() {
-
         super.onDestroyView();
         presenter = null;
         mIsInited = false;

@@ -2,6 +2,7 @@ package com.smona.app.guaika.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,21 +26,18 @@ public class VideoAdapter extends HeaderAndFooterAdapter<VideoData> {
     private Context mContext;
 
     public VideoAdapter(Context context, List<VideoData> list) {
-
         super(list);
         mContext = context;
     }
 
     @Override
     public ViewHolder onCreateItemViewHolder(ViewGroup parent, int viewType) {
-
         View view = LayoutInflater.from(mContext).inflate(R.layout.video_list_item, parent, false);
         return new VideoViewHolder(view);
     }
 
     @Override
     public void onBindItemViewHolder(ViewHolder holder, int position, VideoData item) {
-
         VideoViewHolder videoViewHolder = (VideoViewHolder) holder;
         videoViewHolder.mPlayerView.bind(item.getVideoUrl(), item.getTitle());
         videoViewHolder.mPlayerView.getThumbImageView().setScaleType(ImageView.ScaleType.FIT_XY);

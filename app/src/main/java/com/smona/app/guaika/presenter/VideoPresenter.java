@@ -1,5 +1,7 @@
 package com.smona.app.guaika.presenter;
 
+import android.util.Log;
+
 import com.hannesdorfmann.mosby.mvp.MvpBasePresenter;
 import com.smona.app.guaika.bean.VideoData;
 import com.smona.app.guaika.factory.ResultParseFactory;
@@ -38,7 +40,6 @@ public abstract class VideoPresenter extends MvpBasePresenter<VideoMvpView>
         getHttpCallObservable(mCurPage)
                 .subscribeOn(Schedulers.io())
                 .map(new Func1<String, List<VideoData>>() {
-
                     @Override
                     public List<VideoData> call(String s) {
                         return ResultParseFactory.parse(s, getType());
@@ -74,7 +75,7 @@ public abstract class VideoPresenter extends MvpBasePresenter<VideoMvpView>
                     @Override
                     public void onNext(List<VideoData> videos) {
                         if(isViewAttached()) {
-                            if(loadMore == false) {
+                            if(loadMore) {
                                 getView().setLoadMoreData(videos);
                             } else {
                                 getView().setData(videos);

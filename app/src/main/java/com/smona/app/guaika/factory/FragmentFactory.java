@@ -9,7 +9,7 @@ import com.smona.app.guaika.fragment.HomeVideoFragment;
 import com.smona.app.guaika.http.DataType;
 
 public class FragmentFactory {
-    public static final String KEY_BUNDLE_TAB_ID = "tab_id";
+    public static final String KEY_BUNDLE_TAB_ITEM = "tab_item";
 
     public static BaseFragment createTabFragment() {
         return new TabFragment();
@@ -21,10 +21,13 @@ public class FragmentFactory {
             case HOME:
                 fragment = new HomeVideoFragment();
                 break;
+            case CATEGORY:
+                fragment = new HomeVideoFragment();
+                break;
         }
 
         Bundle bundle = new Bundle();
-        bundle.putInt(KEY_BUNDLE_TAB_ID, tabItem.getTabId());
+        bundle.putSerializable(KEY_BUNDLE_TAB_ITEM, tabItem);
         if(fragment != null) {
             fragment.setArguments(bundle);
         }

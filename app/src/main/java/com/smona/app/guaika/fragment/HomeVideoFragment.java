@@ -5,22 +5,25 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import com.smona.app.guaika.HomeActivity;
 import com.smona.app.guaika.R;
+import com.smona.app.guaika.bean.TabData;
 import com.smona.app.guaika.factory.FragmentFactory;
-import com.smona.app.guaika.presenter.IFengVideoPresenter;
+import com.smona.app.guaika.presenter.HomeVideoPresenter;
 import com.smona.app.guaika.presenter.VideoPresenter;
 
 public class HomeVideoFragment extends VideoFragment {
-    private int mTabId;
+    private TabData mType;
+
     @Override
     public View getContentView(LayoutInflater inflater, @Nullable Bundle savedInstanceState) {
-        mTabId = getArguments().getInt(FragmentFactory.KEY_BUNDLE_TAB_ID);
+        mType = (TabData)getArguments().getSerializable(FragmentFactory.KEY_BUNDLE_TAB_ITEM);
         return super.getContentView(inflater, savedInstanceState);
     }
 
     @Override
     public VideoPresenter createPresenter() {
-        return new IFengVideoPresenter(mTabId);
+        return new HomeVideoPresenter(mType);
     }
 
     @Override

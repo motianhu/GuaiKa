@@ -29,13 +29,7 @@ public abstract class VideoTabPresenter extends MvpBasePresenter<VideoTabMvpView
                 .flatMap(new Func1<Boolean, Observable<List<TabData>>>() {
                     @Override
                     public Observable<List<TabData>> call(Boolean aBoolean) {
-                        List<TabData> tabs = new ArrayList<TabData>();
-
-                        TabData tabData = createTabData(1,"首页",20 );
-                        tabs.add(tabData);
-                        tabData = createTabData(2,"分类",26 );
-                        tabs.add(tabData);
-
+                        List<TabData> tabs = TabData.createTabDatas();
                         return Observable.just(tabs);
                     }
                 })
@@ -58,9 +52,5 @@ public abstract class VideoTabPresenter extends MvpBasePresenter<VideoTabMvpView
                         }
                     }
                 });
-    }
-
-    private TabData createTabData(int id, String name, int type) {
-        return new TabData(id,  name, type);
     }
 }
