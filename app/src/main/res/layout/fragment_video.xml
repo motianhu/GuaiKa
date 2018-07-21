@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.smona.app.guaika.ui.recycler.CommonRecyclerView
+    <com.smona.app.guaika.common.ui.recycler.CommonRecyclerView
         android:id="@+id/video_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </com.smona.app.guaika.ui.recycler.CommonRecyclerView>
+    </com.smona.app.guaika.common.ui.recycler.CommonRecyclerView>
 
 </android.support.v4.widget.SwipeRefreshLayout>

@@ -10,9 +10,9 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.readystatesoftware.systembartint.SystemBarTintManager;
-import com.smona.app.guaika.factory.FragmentFactory;
-import com.smona.app.guaika.fragment.BaseFragment;
-import com.smona.app.guaika.fragment.NameFragment;
+import com.smona.app.guaika.home.factory.FragmentFactory;
+import com.smona.app.guaika.common.BaseFragment;
+import com.smona.app.guaika.common.NameFragment;
 
 import butterknife.ButterKnife;
 
