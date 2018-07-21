@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -60,14 +59,14 @@ public abstract class VideoFragment extends
 
     @Override
     public void showLoadMoreErrorView() {
-        if(mFooterView.getVisibility() == View.VISIBLE) {
+        if (mFooterView.getVisibility() == View.VISIBLE) {
             mFooterView.setVisibility(View.GONE);
         }
     }
 
     @Override
     public void showLoadMoreView() {
-        if(mFooterView.getVisibility() == View.GONE) {
+        if (mFooterView.getVisibility() == View.GONE) {
             mFooterView.setVisibility(View.VISIBLE);
         }
         UIUtil.showToast(mContext, mContext.getString(R.string.no_more_videos));
@@ -100,7 +99,7 @@ public abstract class VideoFragment extends
     @Override
     public void showLoading(boolean pullToRefresh) {
         super.showLoading(pullToRefresh);
-        if(pullToRefresh) {
+        if (pullToRefresh) {
             mSwipeRefreshLayout.setRefreshing(true);
         }
     }
@@ -114,7 +113,7 @@ public abstract class VideoFragment extends
     @Override
     public void showError(Throwable e, boolean pullToRefresh) {
         super.showError(e, pullToRefresh);
-        if(pullToRefresh) {
+        if (pullToRefresh) {
             mSwipeRefreshLayout.setRefreshing(false);
         }
     }

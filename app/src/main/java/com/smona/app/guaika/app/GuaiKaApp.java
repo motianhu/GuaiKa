@@ -36,9 +36,9 @@ public class GuaiKaApp extends Application implements IDbApplication {
 
     @Override
     public SQLiteDBConfig getGlobalDbConfig() {
-        if(mDBConfig == null) {
+        if (mDBConfig == null) {
             synchronized (GuaiKaApp.class) {
-                if(mDBConfig == null) {
+                if (mDBConfig == null) {
                     mDBConfig = new SQLiteDBConfig(getApplicationContext());
                     mDBConfig.setDbName(getResources().getString(R.string.app_name) + ".db");
                     //本地数据库文件保存在应用文件目录

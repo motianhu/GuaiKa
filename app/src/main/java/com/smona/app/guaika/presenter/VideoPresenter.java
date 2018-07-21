@@ -1,7 +1,5 @@
 package com.smona.app.guaika.presenter;
 
-import android.util.Log;
-
 import com.hannesdorfmann.mosby.mvp.MvpBasePresenter;
 import com.smona.app.guaika.bean.VideoData;
 import com.smona.app.guaika.factory.ResultParseFactory;
@@ -19,6 +17,7 @@ public abstract class VideoPresenter extends MvpBasePresenter<VideoMvpView>
         implements TypePresenter {
 
     private int mCurPage = 1;
+
     public void refreshData(boolean pullToRefresh) {
         mCurPage = 1;
         request(false, pullToRefresh);
@@ -48,7 +47,7 @@ public abstract class VideoPresenter extends MvpBasePresenter<VideoMvpView>
                 .flatMap(new Func1<List<VideoData>, Observable<List<VideoData>>>() {
                     @Override
                     public Observable<List<VideoData>> call(List<VideoData> videos) {
-                        if(videos == null || videos.size() == 0) {
+                        if (videos == null || videos.size() == 0) {
                             return Observable.error(new NullPointerException("not load video data"));
                         }
                         return Observable.just(videos);
@@ -59,13 +58,13 @@ public abstract class VideoPresenter extends MvpBasePresenter<VideoMvpView>
                     @Override
                     public void onCompleted() {
                         getView().showContent();
-                        mCurPage ++;
+                        mCurPage++;
                     }
 
                     @Override
                     public void onError(Throwable e) {
                         e.printStackTrace();
-                        if(loadMore) {
+                        if (loadMore) {
                             getView().showLoadMoreErrorView();
                         } else {
                             getView().showError(e, pullToRefresh);
@@ -74,8 +73,8 @@ public abstract class VideoPresenter extends MvpBasePresenter<VideoMvpView>
 
                     @Override
                     public void onNext(List<VideoData> videos) {
-                        if(isViewAttached()) {
-                            if(loadMore) {
+                        if (isViewAttached()) {
+                            if (loadMore) {
                                 getView().setLoadMoreData(videos);
                             } else {
                                 getView().setData(videos);

@@ -1,9 +1,6 @@
 package com.smona.app.guaika.factory;
 
-import android.util.Log;
-
 import com.smona.app.guaika.bean.VideoData;
-import com.smona.app.guaika.bean.TabData;
 import com.smona.app.guaika.http.DataType;
 import com.smona.app.guaika.http.parse.IFengTabResultParse;
 import com.smona.app.guaika.http.parse.ResultParse;
@@ -33,7 +30,7 @@ public class ResultParseFactory {
             JSONObject json = new JSONObject(value);
             ResultParse parse = create(type);
             return parse.parse(json);
-        } catch(Exception e) {
+        } catch (Exception e) {
             return new ArrayList<>(0);
         }
     }

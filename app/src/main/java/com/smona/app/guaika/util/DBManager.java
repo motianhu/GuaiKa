@@ -8,6 +8,7 @@ import cn.ittiger.database.SQLiteDBFactory;
 
 /**
  * 本地数据库管理类
+ *
  * @author laohu
  */
 public class DBManager {
@@ -31,25 +32,26 @@ public class DBManager {
 
     public static DBManager getInstance() {
 
-        if(sDBInstance == null) {
+        if (sDBInstance == null) {
             synchronized (DBManager.class) {
-                if(sDBInstance == null) {
+                if (sDBInstance == null) {
                     sDBInstance = new DBManager();
                 }
             }
         }
-        return  sDBInstance;
+        return sDBInstance;
     }
 
     /**
      * 获取全局数据库操作对象
+     *
      * @return
      */
     public SQLiteDB getSQLiteDB() {
 
-        if(mDB == null) {
+        if (mDB == null) {
             synchronized (this) {
-                if(mDB == null) {
+                if (mDB == null) {
                     SQLiteDBConfig config = mDbApplication.getGlobalDbConfig();
                     mDB = SQLiteDBFactory.createSQLiteDB(config);
                 }
@@ -62,7 +64,7 @@ public class DBManager {
      * 关闭数据库
      */
     public void closeSQLiteDB() {
-        if(this.mDB != null) {
+        if (this.mDB != null) {
             this.mDB.close();
         }
         this.mDB = null;

@@ -2,10 +2,10 @@ package com.smona.app.guaika;
 
 import android.annotation.TargetApi;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -13,7 +13,6 @@ import com.readystatesoftware.systembartint.SystemBarTintManager;
 import com.smona.app.guaika.factory.FragmentFactory;
 import com.smona.app.guaika.fragment.BaseFragment;
 import com.smona.app.guaika.fragment.NameFragment;
-import com.smona.app.guaika.http.DataType;
 
 import butterknife.ButterKnife;
 
@@ -30,7 +29,7 @@ public class HomeActivity extends AppCompatActivity {
 
     @TargetApi(19)
     private void setTranslucentStatus(boolean on) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             Window win = getWindow();
             WindowManager.LayoutParams winParams = win.getAttributes();
             final int bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
@@ -53,7 +52,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void switchFragment(Fragment fragment) {
-        setTitle(((NameFragment)fragment).getName());
+        setTitle(((NameFragment) fragment).getName());
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.content_main, fragment);
         fragmentTransaction.commit();

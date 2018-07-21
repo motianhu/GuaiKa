@@ -1,17 +1,3 @@
-/*******************************************************************************
- *
- *    Copyright (c) BaiNa Co. Ltd
- *
- *    DolphinCore
- *      DisplayManager.java
- *    DisplayManager
- *
- *    @author: DanLiu
- *    @since:  2010-12-15
- *    @version: 1.0
- *
- ******************************************************************************/
-
 package com.smona.app.guaika.util;
 
 import android.app.Activity;
@@ -45,14 +31,11 @@ public class DisplayManager {
     public final static int DEVICE_BETWEEN_5_AND_7_INCH = 0;
 
     private final static String TENDERLOIN = "tenderloin";
-    private static boolean sIsSonyC1504 = Build.FINGERPRINT.contains("Sony") && Build.FINGERPRINT.contains("C1504");
-
     /*
      * This is galaxy tab size calculated by DPI, we don't use xDPI or yDPI as some manufacture's
      * xDPI and yDPI are very strange.
      */
     private final static float GALAXY_TAB_SIZE = 5f;
-
     /*
      * This is a middle value for Milestone and Galaxy Tab. We consider devices smaller than this as Phone,
      *  larger than this as Pad.
@@ -61,40 +44,44 @@ public class DisplayManager {
      */
     private final static float PAD_PHONE_THREDHOLD = 4.72f;
     private final static float PAD_TOP = 8.0f;
-
     private final static float DEVICE_5_INCH = 4.8f;
-
+    // private static final int LAYER_TYPE_NONE = 0;
+    private static final int LAYER_TYPE_SOFTWARE = 1;
+    private static final int LAYER_TYPE_HARDWARE = 2;
+    private static boolean sIsSonyC1504 = Build.FINGERPRINT.contains("Sony") && Build.FINGERPRINT.contains("C1504");
     private static int sScreenWidthDip;
     private static int sScreenHeightDip;
     private static int sScreenWidthPixels;
     private static int sScreenHeightPixels;
+    private static Boolean sIsTablet = null;
+    private static Boolean sIsSmallScreen = null;
 
     public static float screenHeightPhysical(Context context) {
         Display display = getDisplay(context);
         DisplayMetrics metrics = new DisplayMetrics();
         display.getMetrics(metrics);
-        return (float)display.getHeight() / metrics.densityDpi;
+        return (float) display.getHeight() / metrics.densityDpi;
     }
 
     public static float screenWidthPhysical(Context context) {
         Display display = getDisplay(context);
         DisplayMetrics metrics = new DisplayMetrics();
         display.getMetrics(metrics);
-        return (float)display.getWidth() / metrics.densityDpi;
+        return (float) display.getWidth() / metrics.densityDpi;
     }
 
     public static float screenHeightPhysical2(Context context) {
         Display display = getDisplay(context);
         DisplayMetrics metrics = new DisplayMetrics();
         display.getMetrics(metrics);
-        return (float)display.getHeight() / metrics.ydpi;
+        return (float) display.getHeight() / metrics.ydpi;
     }
 
     public static float screenWidthPhysical2(Context context) {
         Display display = getDisplay(context);
         DisplayMetrics metrics = new DisplayMetrics();
         display.getMetrics(metrics);
-        return (float)display.getWidth() / metrics.xdpi;
+        return (float) display.getWidth() / metrics.xdpi;
     }
 
     public static int dipToPixel(int dip) {
@@ -133,7 +120,7 @@ public class DisplayManager {
             Point outPoint = new Point();
             display.getRealSize(outPoint);
             sScreenWidthPixels = outPoint.x;
-        }  else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
             Point outPoint = new Point();
             display.getSize(outPoint);
             sScreenWidthPixels = outPoint.x;
@@ -223,10 +210,6 @@ public class DisplayManager {
         return false;
     }
 
-    // private static final int LAYER_TYPE_NONE = 0;
-    private static final int LAYER_TYPE_SOFTWARE = 1;
-    private static final int LAYER_TYPE_HARDWARE = 2;
-
     public static void setHardwareAccelerated(View view) {
         if (Build.VERSION.SDK_INT >= 11) {
             SetLayerTypeWrapper.setLayerType(view, LAYER_TYPE_HARDWARE, null);
@@ -236,13 +219,6 @@ public class DisplayManager {
     public static void setSoftwareRendering(View view) {
         if (Build.VERSION.SDK_INT >= 11) {
             SetLayerTypeWrapper.setLayerType(view, LAYER_TYPE_SOFTWARE, null);
-        }
-    }
-
-    private static class SetLayerTypeWrapper {
-
-        public static void setLayerType(View view, int layerType, Paint paint) {
-            view.setLayerType(layerType, paint);
         }
     }
 
@@ -400,9 +376,6 @@ public class DisplayManager {
         return 72;
     }
 
-    private static Boolean sIsTablet = null;
-    private static Boolean sIsSmallScreen = null;
-
     public static boolean isTablet(Context context) {
         if (null == context && null == sIsTablet) {
             throw new IllegalArgumentException("context maynot be null.");
@@ -431,27 +404,33 @@ public class DisplayManager {
     }
 
     /**
-    *
-    * @param activity
-    * @return > 0 success; <= 0 fail
-    */
-   public static int getStatusBarHeight(Activity activity){
-       int statusHeight = 0;
-       Rect localRect = new Rect();
-       activity.getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
-       statusHeight = localRect.top;
-       if (0 == statusHeight){
-           Class<?> localClass;
-           try {
-               localClass = Class.forName("com.android.internal.R$dimen");
-               Object localObject = localClass.newInstance();
-               int i5 = Integer.parseInt(localClass.getField("status_bar_height").get(localObject).toString());
-               statusHeight = activity.getResources().getDimensionPixelSize(i5);
-           } catch (Exception e) {
-               e.printStackTrace();
-           }
-       }
-       return statusHeight;
-   }
+     * @param activity
+     * @return > 0 success; <= 0 fail
+     */
+    public static int getStatusBarHeight(Activity activity) {
+        int statusHeight = 0;
+        Rect localRect = new Rect();
+        activity.getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
+        statusHeight = localRect.top;
+        if (0 == statusHeight) {
+            Class<?> localClass;
+            try {
+                localClass = Class.forName("com.android.internal.R$dimen");
+                Object localObject = localClass.newInstance();
+                int i5 = Integer.parseInt(localClass.getField("status_bar_height").get(localObject).toString());
+                statusHeight = activity.getResources().getDimensionPixelSize(i5);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return statusHeight;
+    }
+
+    private static class SetLayerTypeWrapper {
+
+        public static void setLayerType(View view, int layerType, Paint paint) {
+            view.setLayerType(layerType, paint);
+        }
+    }
 }
 

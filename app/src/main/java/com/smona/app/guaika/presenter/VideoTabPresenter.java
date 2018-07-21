@@ -2,11 +2,8 @@ package com.smona.app.guaika.presenter;
 
 import com.hannesdorfmann.mosby.mvp.MvpBasePresenter;
 import com.smona.app.guaika.bean.TabData;
-import com.smona.app.guaika.factory.ResultParseFactory;
 import com.smona.app.guaika.mvpview.VideoTabMvpView;
-import com.smona.app.guaika.util.DBManager;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import rx.Observable;
@@ -47,7 +44,7 @@ public abstract class VideoTabPresenter extends MvpBasePresenter<VideoTabMvpView
 
                     @Override
                     public void onNext(List<TabData> tabs) {
-                        if(isViewAttached()) {
+                        if (isViewAttached()) {
                             getView().setData(tabs);
                         }
                     }

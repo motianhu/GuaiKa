@@ -43,7 +43,7 @@ public abstract class BaseFragment<CV extends View, M, V extends MvpLceView<M>, 
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         showLoading(false);
-        if(isInitRefreshEnable() && isDelayRefreshEnable() == false) {
+        if (isInitRefreshEnable() && isDelayRefreshEnable() == false) {
             loadData(false);
         }
     }
@@ -51,14 +51,14 @@ public abstract class BaseFragment<CV extends View, M, V extends MvpLceView<M>, 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        if(isVisibleToUser && isInitRefreshEnable() == false && isDelayRefreshEnable() && mIsInited == false) {
+        if (isVisibleToUser && isInitRefreshEnable() == false && isDelayRefreshEnable() && mIsInited == false) {
             mIsInited = true;
             refreshData(false);
         }
     }
 
     private void refreshData(final boolean pullToRefresh) {
-        if(presenter != null) {
+        if (presenter != null) {
             loadData(pullToRefresh);
         } else {
             Observable.timer(50, TimeUnit.MILLISECONDS)
@@ -74,6 +74,7 @@ public abstract class BaseFragment<CV extends View, M, V extends MvpLceView<M>, 
 
     /**
      * Fragment数据视图
+     *
      * @param inflater
      * @param savedInstanceState
      * @return
@@ -96,22 +97,22 @@ public abstract class BaseFragment<CV extends View, M, V extends MvpLceView<M>, 
     @Override
     public void showLoading(boolean pullToRefresh) {
         super.showLoading(pullToRefresh);
-        if(!pullToRefresh) {
-            ((LoadingView)loadingView).start();
+        if (!pullToRefresh) {
+            ((LoadingView) loadingView).start();
         }
     }
 
     @Override
     public void showContent() {
         super.showContent();
-        ((LoadingView)loadingView).stop();
+        ((LoadingView) loadingView).stop();
     }
 
     @Override
     public void showError(Throwable e, boolean pullToRefresh) {
         super.showError(e, pullToRefresh);
-        if(!pullToRefresh) {
-            ((LoadingView)loadingView).stop();
+        if (!pullToRefresh) {
+            ((LoadingView) loadingView).stop();
         }
     }
 

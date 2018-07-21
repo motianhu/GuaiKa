@@ -15,6 +15,15 @@ public class TabData implements Serializable {
         this.type = type;
     }
 
+    public static List<TabData> createTabDatas() {
+        List<TabData> tabs = new ArrayList<TabData>();
+        TabData tabData = new TabData(20, "首页", 20);
+        tabs.add(tabData);
+        tabData = new TabData(26, "分类", 26);
+        tabs.add(tabData);
+        return tabs;
+    }
+
     public int getTabId() {
         return tabId;
     }
@@ -25,14 +34,5 @@ public class TabData implements Serializable {
 
     public int getType() {
         return type;
-    }
-
-    public static List<TabData> createTabDatas() {
-        List<TabData> tabs = new ArrayList<TabData>();
-        TabData tabData = new TabData(20,"首页",20 );
-        tabs.add(tabData);
-        tabData = new TabData(26,"分类",26 );
-        tabs.add(tabData);
-        return tabs;
     }
 }

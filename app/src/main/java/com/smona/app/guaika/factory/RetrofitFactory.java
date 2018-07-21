@@ -17,9 +17,9 @@ public class RetrofitFactory {
     private static volatile IFengApi sIFengService;
 
     public static IFengApi getVideoService() {
-        if(sIFengService == null) {
+        if (sIFengService == null) {
             synchronized (RetrofitFactory.class) {
-                if(sIFengService == null) {
+                if (sIFengService == null) {
                     sIFengService = createService();
                 }
             }
@@ -33,7 +33,7 @@ public class RetrofitFactory {
                 .readTimeout(TIME_OUT, TimeUnit.SECONDS)
                 .writeTimeout(TIME_OUT, TimeUnit.SECONDS)
                 .addInterceptor(new HttpLoggingInterceptor()
-                .setLevel(HttpLoggingInterceptor.Level.BODY))
+                        .setLevel(HttpLoggingInterceptor.Level.BODY))
                 .build();
 
         Retrofit retrofit = new Retrofit.Builder()

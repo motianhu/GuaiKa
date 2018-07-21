@@ -7,17 +7,18 @@ public class Utils {
 
     /**
      * 转换视频时长(s)为时分秒的展示格式
-     * @param seconds   视频总时长，单位秒
+     *
+     * @param seconds 视频总时长，单位秒
      * @return
      */
     public static String formatTimeLength(long seconds) {
 
         String formatLength = "";
-        if(seconds == 0) {
+        if (seconds == 0) {
             formatLength = "00:00";
-        } else if(seconds < 60) {//小于1分钟
+        } else if (seconds < 60) {//小于1分钟
             formatLength = "00:" + (seconds < 10 ? "0" + seconds : seconds);
-        } else if(seconds < 60 * 60) {//小于1小时
+        } else if (seconds < 60 * 60) {//小于1小时
             long sec = seconds % 60;
             long min = seconds / 60;
             formatLength = (min < 10 ? "0" + min : String.valueOf(min)) + ":" +

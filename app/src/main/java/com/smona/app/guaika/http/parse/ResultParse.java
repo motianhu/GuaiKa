@@ -1,7 +1,7 @@
 package com.smona.app.guaika.http.parse;
 
-import com.smona.app.guaika.bean.VideoData;
 import com.smona.app.guaika.bean.TabData;
+import com.smona.app.guaika.bean.VideoData;
 
 import org.json.JSONException;
 import org.json.JSONObject;

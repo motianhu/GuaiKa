@@ -1,8 +1,8 @@
 package com.smona.app.guaika.http.parse;
 
 import com.smona.app.guaika.bean.IFengInfo;
-import com.smona.app.guaika.bean.VideoData;
 import com.smona.app.guaika.bean.TabData;
+import com.smona.app.guaika.bean.VideoData;
 import com.smona.app.guaika.http.DataType;
 import com.smona.app.guaika.util.DataKeeper;
 import com.smona.app.guaika.util.Utils;
@@ -13,7 +13,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
-
 
 
 public class IFengTabResultParse implements ResultParse {
@@ -40,10 +39,10 @@ public class IFengTabResultParse implements ResultParse {
 
         JSONArray array = json.getJSONArray(KEY_DATA_LIST);
         JSONObject item;
-        for(int i = 0; i < array.length(); i++) {
+        for (int i = 0; i < array.length(); i++) {
             item = array.getJSONObject(i);
             String type = item.optString(KEY_DATA_TYPE);
-            if(!MEMBER_TYPE.equals(type)) {
+            if (!MEMBER_TYPE.equals(type)) {
                 continue;
             }
             VideoData videoData = new VideoData();
@@ -60,7 +59,7 @@ public class IFengTabResultParse implements ResultParse {
 
             list.add(videoData);
 
-            if(i == array.length() - 1) {
+            if (i == array.length() - 1) {
                 String itemId = item.optString(KEY_DATA_ITEMID);
                 int tabId = DataKeeper.getCurrentTabId();
                 IFengInfo.save(new IFengInfo(tabId, itemId));
@@ -76,7 +75,7 @@ public class IFengTabResultParse implements ResultParse {
 
         JSONArray array = json.getJSONArray(KEY_TAB_LIST);
         JSONObject item;
-        for(int i = 0; i < array.length(); i++) {
+        for (int i = 0; i < array.length(); i++) {
             item = array.getJSONObject(i);
             int tabId = item.optInt(KEY_TAB_ID);
             String tabName = item.optString(KEY_TAB_NAME);

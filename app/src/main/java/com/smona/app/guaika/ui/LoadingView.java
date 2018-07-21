@@ -15,6 +15,7 @@ import java.util.List;
 
 /**
  * 加载动画
+ *
  * @author: laohu on 2016/7/3
  * @site: http://ittiger.cn
  */
@@ -79,7 +80,7 @@ public class LoadingView extends View {
     protected void onDraw(Canvas canvas) {
 
         super.onDraw(canvas);
-        for(Ball ball : mBallAnimator.getBalls()) {
+        for (Ball ball : mBallAnimator.getBalls()) {
             ball.draw(canvas);
         }
     }
@@ -98,11 +99,11 @@ public class LoadingView extends View {
         int widthSpecSize = MeasureSpec.getSize(widthMeasureSpec);
         int heightSpecMode = MeasureSpec.getMode(heightMeasureSpec);
         int heightSpecSize = MeasureSpec.getSize(heightMeasureSpec);
-        if(widthSpecMode == MeasureSpec.AT_MOST && heightSpecMode == MeasureSpec.AT_MOST) {
+        if (widthSpecMode == MeasureSpec.AT_MOST && heightSpecMode == MeasureSpec.AT_MOST) {
             setMeasuredDimension(MIN_RADIUS * 2 + MIN_RADIUS * 2 + MAX_RADIUS * 2, MAX_RADIUS * 2);
-        } else if(widthSpecMode == MeasureSpec.AT_MOST) {
+        } else if (widthSpecMode == MeasureSpec.AT_MOST) {
             setMeasuredDimension(MIN_RADIUS * 2 + MIN_RADIUS * 2 + MAX_RADIUS * 2, heightSpecSize);
-        } else if(heightSpecMode == MeasureSpec.AT_MOST) {
+        } else if (heightSpecMode == MeasureSpec.AT_MOST) {
             setMeasuredDimension(widthSpecSize, MAX_RADIUS * 2);
         }
     }
@@ -115,7 +116,7 @@ public class LoadingView extends View {
 
     public void stop() {
 
-        if(mIsAnimating) {
+        if (mIsAnimating) {
             mBallAnimator.stop();
             mIsAnimating = false;
         }
@@ -180,17 +181,17 @@ public class LoadingView extends View {
         public void start() {
 
             mBallAnimators.clear();
-            for(int i = 0; i < mBalls.size(); i++) {
+            for (int i = 0; i < mBalls.size(); i++) {
                 createBallAnimator(mBalls.get(i), mDuration * i);
             }
         }
 
         public void stop() {
 
-            for(ValueAnimator valueAnimator : mBallAnimators) {
+            for (ValueAnimator valueAnimator : mBallAnimators) {
                 valueAnimator.cancel();
             }
-            for(Ball ball : mBalls) {
+            for (Ball ball : mBalls) {
                 ball.reset();
             }
         }

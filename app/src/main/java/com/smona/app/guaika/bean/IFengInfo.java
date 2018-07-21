@@ -19,6 +19,16 @@ public class IFengInfo {
         this.itemId = itemId;
     }
 
+    public static void save(IFengInfo iFengInfo) {
+
+        boolean isExist = DBManager.getInstance().getSQLiteDB().queryIfExist(IFengInfo.class, String.valueOf(iFengInfo.getTabId()));
+        if (isExist) {
+            DBManager.getInstance().getSQLiteDB().update(iFengInfo);
+        } else {
+            DBManager.getInstance().getSQLiteDB().save(iFengInfo);
+        }
+    }
+
     public int getTabId() {
 
         return tabId;
@@ -37,15 +47,5 @@ public class IFengInfo {
     public void setItemId(String itemId) {
 
         this.itemId = itemId;
-    }
-
-    public static void save(IFengInfo iFengInfo) {
-
-        boolean isExist = DBManager.getInstance().getSQLiteDB().queryIfExist(IFengInfo.class, String.valueOf(iFengInfo.getTabId()));
-        if(isExist) {
-            DBManager.getInstance().getSQLiteDB().update(iFengInfo);
-        } else {
-            DBManager.getInstance().getSQLiteDB().save(iFengInfo);
-        }
     }
 }

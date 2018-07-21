@@ -45,12 +45,12 @@ public class CommonRecyclerView extends RecyclerView {
             public void onLongPress(MotionEvent e) {
 
                 super.onLongPress(e);
-                if(mItemLongClickListener != null) {
+                if (mItemLongClickListener != null) {
                     View childView = findChildViewUnder(e.getX(), e.getY());
-                    if(childView != null) {
+                    if (childView != null) {
                         int position = getChildLayoutPosition(childView);
-                        if(!(mHeaderAndFooterAdapter.isHeaderViewPosition(position) ||
-                            mHeaderAndFooterAdapter.isFooterViewPosition(position))) {
+                        if (!(mHeaderAndFooterAdapter.isHeaderViewPosition(position) ||
+                                mHeaderAndFooterAdapter.isFooterViewPosition(position))) {
                             int headerViewCount = mHeaderAndFooterAdapter.getHeaderViewCount();
                             mItemLongClickListener.onItemLongClick(position - headerViewCount, childView);
                         }
@@ -61,11 +61,11 @@ public class CommonRecyclerView extends RecyclerView {
             @Override
             public boolean onSingleTapUp(MotionEvent e) {
 
-                if(mOnItemClickListener != null) {
-                    View childView = findChildViewUnder(e.getX(),e.getY());
-                    if(childView != null){
+                if (mOnItemClickListener != null) {
+                    View childView = findChildViewUnder(e.getX(), e.getY());
+                    if (childView != null) {
                         int position = getChildLayoutPosition(childView);
-                        if(!(mHeaderAndFooterAdapter.isHeaderViewPosition(position) ||
+                        if (!(mHeaderAndFooterAdapter.isHeaderViewPosition(position) ||
                                 mHeaderAndFooterAdapter.isFooterViewPosition(position))) {
                             int headerViewCount = mHeaderAndFooterAdapter.getHeaderViewCount();
                             mOnItemClickListener.onItemClick(position - headerViewCount, childView);
@@ -94,12 +94,12 @@ public class CommonRecyclerView extends RecyclerView {
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
 
                 super.onScrollStateChanged(recyclerView, newState);
-                if(newState == SCROLL_STATE_IDLE && mIsAutoLoadMore && mLoadMoreListener != null && getAdapter() != null) {
-                    if(mLastVisiblePosition + 1 == getAdapter().getItemCount()) {
+                if (newState == SCROLL_STATE_IDLE && mIsAutoLoadMore && mLoadMoreListener != null && getAdapter() != null) {
+                    if (mLastVisiblePosition + 1 == getAdapter().getItemCount()) {
                         mLoadMoreListener.onLoadMore();
                     }
                 }
-                if(mOnScrollListener != null) {
+                if (mOnScrollListener != null) {
                     mOnScrollListener.onScrollStateChanged(recyclerView, newState);
                 }
             }
@@ -108,10 +108,10 @@ public class CommonRecyclerView extends RecyclerView {
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
 
                 super.onScrolled(recyclerView, dx, dy);
-                if(mIsAutoLoadMore && mLoadMoreListener != null) {
+                if (mIsAutoLoadMore && mLoadMoreListener != null) {
                     mLastVisiblePosition = getLastVisiblePosition();
                 }
-                if(mOnScrollListener != null) {
+                if (mOnScrollListener != null) {
                     mOnScrollListener.onScrolled(recyclerView, dx, dy);
                 }
             }

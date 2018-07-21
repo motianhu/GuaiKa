@@ -4,8 +4,8 @@ import android.os.Bundle;
 
 import com.smona.app.guaika.bean.TabData;
 import com.smona.app.guaika.fragment.BaseFragment;
-import com.smona.app.guaika.fragment.TabFragment;
 import com.smona.app.guaika.fragment.HomeVideoFragment;
+import com.smona.app.guaika.fragment.TabFragment;
 import com.smona.app.guaika.http.DataType;
 
 public class FragmentFactory {
@@ -28,7 +28,7 @@ public class FragmentFactory {
 
         Bundle bundle = new Bundle();
         bundle.putSerializable(KEY_BUNDLE_TAB_ITEM, tabItem);
-        if(fragment != null) {
+        if (fragment != null) {
             fragment.setArguments(bundle);
         }
 
