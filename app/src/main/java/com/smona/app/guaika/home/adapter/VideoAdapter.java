@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.smona.app.guaika.R;
@@ -38,20 +39,27 @@ public class VideoAdapter extends HeaderAndFooterAdapter<VideoData> {
     @Override
     public void onBindItemViewHolder(ViewHolder holder, int position, VideoData item) {
         VideoViewHolder videoViewHolder = (VideoViewHolder) holder;
-        videoViewHolder.mPlayerView.bind(item.getVideoUrl(), item.getTitle());
-        videoViewHolder.mPlayerView.getThumbImageView().setScaleType(ImageView.ScaleType.FIT_XY);
+        videoViewHolder.mImageView.setScaleType(ImageView.ScaleType.FIT_XY);
         Glide.with(mContext).load(item.getImageUrl())
                 .placeholder(R.drawable.video_image_place_holder)
                 .error(R.drawable.video_image_place_holder)
-                .into(videoViewHolder.mPlayerView.getThumbImageView());
+                .into(videoViewHolder.mImageView);
+        videoViewHolder.mTitle.setText(item.getTitle());
     }
 
     class VideoViewHolder extends ViewHolder {
-        @BindView(R.id.video_player_view)
-        VideoPlayerView mPlayerView;
+        @BindView(R.id.thumbnail)
+        ImageView mImageView;
+        @BindView(R.id.title)
+        TextView mTitle;
+        @BindView(R.id.author)
+        TextView mAuthor;
+        @BindView(R.id.share)
+        View mShareTo;
+        @BindView(R.id.like)
+        TextView mLike;
 
         public VideoViewHolder(View itemView) {
-
             super(itemView);
             //以宽高比16:9的比例设置播放器的尺寸
             int width = DisplayManager.screenWidthPixel(mContext);

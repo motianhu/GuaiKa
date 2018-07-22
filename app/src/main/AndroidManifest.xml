@@ -31,6 +31,12 @@
 
         <activity android:name=".activity.SettingActivity"
             android:screenOrientation="portrait" />
+
+        <activity android:name=".activity.VideoActivity"
+            android:screenOrientation="portrait" />
+
+        <activity android:name=".activity.CategoryActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

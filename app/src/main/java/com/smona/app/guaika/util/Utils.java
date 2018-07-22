@@ -1,8 +1,5 @@
 package com.smona.app.guaika.util;
 
-/**
- * Created by baina on 16-9-14.
- */
 public class Utils {
 
     /**

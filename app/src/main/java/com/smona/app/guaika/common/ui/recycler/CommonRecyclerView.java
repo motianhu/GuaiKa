@@ -22,23 +22,19 @@ public class CommonRecyclerView extends RecyclerView {
     private int mLastVisiblePosition = 0;
 
     public CommonRecyclerView(Context context) {
-
         this(context, null);
     }
 
     public CommonRecyclerView(Context context, AttributeSet attrs) {
-
         this(context, attrs, 0);
     }
 
     public CommonRecyclerView(Context context, AttributeSet attrs, int defStyle) {
-
         super(context, attrs, defStyle);
         init(context);
     }
 
     private void init(Context context) {
-
         mGestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
 
             @Override
@@ -124,7 +120,6 @@ public class CommonRecyclerView extends RecyclerView {
      * @return
      */
     public int getLastVisiblePosition() {
-
         int position;
         if (getLayoutManager() instanceof LinearLayoutManager) {
             position = ((LinearLayoutManager) getLayoutManager()).findLastVisibleItemPosition();
@@ -169,7 +164,6 @@ public class CommonRecyclerView extends RecyclerView {
      * @return
      */
     private int getMaxPosition(int[] positions) {
-
         int maxPosition = Integer.MIN_VALUE;
         for (int i = 0; i < positions.length; i++) {
             maxPosition = Math.max(maxPosition, positions[i]);

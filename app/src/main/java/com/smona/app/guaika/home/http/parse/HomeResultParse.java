@@ -1,5 +1,6 @@
 package com.smona.app.guaika.home.http.parse;
 
+import com.google.gson.JsonObject;
 import com.smona.app.guaika.main.bean.IFengInfo;
 import com.smona.app.guaika.home.bean.VideoData;
 import com.smona.app.guaika.main.http.DataType;
@@ -27,6 +28,7 @@ public class HomeResultParse implements ResultParse {
     private static final String KEY_DATA_TYPE = "memberType";
     private static final String KEY_DATA_VIDEO_ITEM = "memberItem";
     private static final String KEY_DATA_VIDEO_DURATION = "duration";
+    private static final String KEY_DATA_IMAGE_LIST = "imageList";
     private static final String KEY_DATA_VIDEO_IMAGE = "image";
     private static final String KEY_DATA_VIDEO_DATA_LIST = "videoFiles";
     private static final String KEY_DATA_VIDEO_URL = "mediaUrl";
@@ -49,8 +51,12 @@ public class HomeResultParse implements ResultParse {
             videoData.setId(item.optString(KEY_DATA_ID));
             videoData.setTitle(item.optString(KEY_DATA_TITLE));
 
+            JSONArray images = item.getJSONArray(KEY_DATA_IMAGE_LIST);
+            JSONObject image = images.getJSONObject(0);
+            videoData.setImageUrl(image.optString(KEY_DATA_VIDEO_IMAGE));
+
             JSONObject video = item.getJSONObject(KEY_DATA_VIDEO_ITEM);
-            videoData.setImageUrl(video.optString(KEY_DATA_VIDEO_IMAGE));
+
             long duration = video.optLong(KEY_DATA_VIDEO_DURATION);
             videoData.setDuration(Utils.formatTimeLength(duration));
             video = video.getJSONArray(KEY_DATA_VIDEO_DATA_LIST).getJSONObject(1);

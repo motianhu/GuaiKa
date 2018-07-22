@@ -1,5 +1,7 @@
 package com.smona.app.guaika.home.factory;
 
+import android.util.Log;
+
 import com.smona.app.guaika.category.http.parse.CategoryResultParse;
 import com.smona.app.guaika.home.bean.VideoData;
 import com.smona.app.guaika.main.http.DataType;
@@ -32,6 +34,7 @@ public class ResultParseFactory {
             ResultParse parse = create(type);
             return parse.parse(json);
         } catch (Exception e) {
+            e.printStackTrace();
             return new ArrayList<>(0);
         }
     }
