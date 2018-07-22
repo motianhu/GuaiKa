@@ -12,7 +12,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/menu_color_divider_height"
-        android:layout_marginLeft="@dimen/setting_padding_left"
+        android:layout_marginStart="@dimen/setting_padding_left"
         android:background="@color/setting_dividing_line_color" />
 
     <TextView
@@ -23,7 +23,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/menu_color_divider_height"
-        android:layout_marginLeft="@dimen/setting_padding_left"
+        android:layout_marginStart="@dimen/setting_padding_left"
         android:background="@color/setting_dividing_line_color" />
     <TextView
         android:id="@+id/share"
@@ -32,6 +32,6 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/menu_color_divider_height"
-        android:layout_marginLeft="@dimen/setting_padding_left"
+        android:layout_marginStart="@dimen/setting_padding_left"
         android:background="@color/setting_dividing_line_color" />
 </LinearLayout>

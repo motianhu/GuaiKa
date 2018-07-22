@@ -33,4 +33,6 @@
     <dimen name="common_text_size_eighteen">18dp</dimen>
     <dimen name="menu_color_divider_height">2px</dimen>
     <dimen name="setting_padding_left">20dp</dimen>
+    <dimen name="home_icon_size">16dp</dimen>
+    <dimen name="home_text_size">14sp</dimen>
 </resources>

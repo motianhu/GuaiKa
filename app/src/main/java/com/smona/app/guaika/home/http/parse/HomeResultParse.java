@@ -13,6 +13,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 
 public class HomeResultParse implements ResultParse {
@@ -61,6 +62,9 @@ public class HomeResultParse implements ResultParse {
             videoData.setDuration(Utils.formatTimeLength(duration));
             video = video.getJSONArray(KEY_DATA_VIDEO_DATA_LIST).getJSONObject(1);
             videoData.setVideoUrl(video.optString(KEY_DATA_VIDEO_URL));
+
+            videoData.setAuthor("飞龙在天");
+            videoData.setLikeCount(2356);
 
             list.add(videoData);
 
