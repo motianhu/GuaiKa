@@ -1,7 +1,15 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!-- Base application theme. -->
+    <style name="HomeTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -11,6 +19,25 @@
     <style name="FullScreenTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="setting_menu_item_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">56dip</item>
+        <item name="android:background">@drawable/setting_menu_item_bg</item>
+        <item name="android:textColor">@color/setting_menu_text</item>
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:onClick">onClick</item>
+        <item name="android:clickable">true</item>
+        <item name="android:paddingLeft">20dip</item>
+        <item name="android:paddingRight">14dip</item>
+        <item name="android:shadowColor">@color/white</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">1</item>
+        <item name="android:textSize">@dimen/common_text_size_eighteen</item>
+        <item name="android:drawableRight">@drawable/setting_more_triangle</item>
+        <item name="android:drawablePadding">14dip</item>
     </style>
 
 </resources>

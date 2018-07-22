@@ -1,31 +1,22 @@
-package com.smona.app.guaika;
+package com.smona.app.guaika.activity;
 
 import android.annotation.TargetApi;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.view.WindowManager;
 
 import com.readystatesoftware.systembartint.SystemBarTintManager;
-import com.smona.app.guaika.home.factory.FragmentFactory;
-import com.smona.app.guaika.common.fragment.BaseFragment;
-import com.smona.app.guaika.common.fragment.NameFragment;
+import com.smona.app.guaika.R;
 
-import butterknife.ButterKnife;
-
-public class HomeActivity extends AppCompatActivity {
-
+public class BaseActivity  extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
-        ButterKnife.bind(this);
         setTranslucentStatus(true);
-        init();
     }
+
 
     @TargetApi(19)
     private void setTranslucentStatus(boolean on) {
@@ -44,18 +35,5 @@ public class HomeActivity extends AppCompatActivity {
         tintManager.setStatusBarTintColor(getResources().getColor(R.color.colorPrimary));
         tintManager.setStatusBarTintEnabled(true);
         tintManager.setNavigationBarTintEnabled(true);
-    }
-
-    private void init() {
-        BaseFragment fragment = FragmentFactory.createTabFragment();
-        switchFragment(fragment);
-    }
-
-    private void switchFragment(Fragment fragment) {
-        setTitle(((NameFragment) fragment).getName());
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.content_main, fragment);
-        fragmentTransaction.commit();
-
     }
 }

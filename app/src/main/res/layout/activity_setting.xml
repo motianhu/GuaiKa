@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/feedback"
+        style="@style/setting_menu_item_style"
+        android:text="@string/setting_feedback" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/menu_color_divider_height"
+        android:layout_marginLeft="@dimen/setting_padding_left"
+        android:background="@color/setting_dividing_line_color" />
+
+    <TextView
+        android:id="@+id/about"
+        style="@style/setting_menu_item_style"
+        android:text="@string/setting_about" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/menu_color_divider_height"
+        android:layout_marginLeft="@dimen/setting_padding_left"
+        android:background="@color/setting_dividing_line_color" />
+    <TextView
+        android:id="@+id/share"
+        style="@style/setting_menu_item_style"
+        android:text="@string/setting_shareto" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/menu_color_divider_height"
+        android:layout_marginLeft="@dimen/setting_padding_left"
+        android:background="@color/setting_dividing_line_color" />
+</LinearLayout>

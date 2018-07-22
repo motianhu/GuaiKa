@@ -29,4 +29,8 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="common_text_size_eighteen">18dp</dimen>
+    <dimen name="menu_color_divider_height">2px</dimen>
+    <dimen name="setting_padding_left">20dp</dimen>
 </resources>

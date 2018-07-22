@@ -6,4 +6,7 @@
     <string name="db_name">guaika</string>
     <string name="home_fragment">首页</string>
     <string name="category_fragment">分类</string>
+    <string name="setting_feedback">问题反馈</string>
+    <string name="setting_about">关于我们</string>
+    <string name="setting_shareto">分享</string>
 </resources>
