@@ -11,7 +11,7 @@ import com.smona.app.guaika.home.factory.FragmentFactory;
 import com.smona.app.guaika.home.presenter.HomeVideoPresenter;
 import com.smona.app.guaika.home.presenter.VideoPresenter;
 
-public class HomeVideoFragment extends VideoFragment {
+public class HomeFragment extends VideoFragment {
     private TabData mType;
 
     @Override
@@ -27,7 +27,7 @@ public class HomeVideoFragment extends VideoFragment {
 
     @Override
     public int getName() {
-        return R.string.app_name;
+        return R.string.home_fragment;
     }
 
     @Override

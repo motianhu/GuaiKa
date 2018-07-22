@@ -1,8 +1,9 @@
 package com.smona.app.guaika.home.factory;
 
+import com.smona.app.guaika.category.http.parse.CategoryResultParse;
 import com.smona.app.guaika.home.bean.VideoData;
 import com.smona.app.guaika.main.http.DataType;
-import com.smona.app.guaika.home.http.parse.IFengTabResultParse;
+import com.smona.app.guaika.home.http.parse.HomeResultParse;
 import com.smona.app.guaika.home.http.parse.ResultParse;
 
 import org.json.JSONObject;
@@ -16,10 +17,10 @@ public class ResultParseFactory {
         ResultParse parse = null;
         switch (type) {
             case HOME:
-                parse = new IFengTabResultParse();
+                parse = new HomeResultParse();
                 break;
             case CATEGORY:
-                parse = new IFengTabResultParse();
+                parse = new CategoryResultParse();
                 break;
         }
         return parse;

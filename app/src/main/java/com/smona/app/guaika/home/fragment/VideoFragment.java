@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import com.smona.app.guaika.R;
-import com.smona.app.guaika.common.BaseFragment;
+import com.smona.app.guaika.common.fragment.BaseFragment;
 import com.smona.app.guaika.home.adapter.VideoAdapter;
 import com.smona.app.guaika.home.bean.VideoData;
 import com.smona.app.guaika.home.mvpview.VideoMvpView;

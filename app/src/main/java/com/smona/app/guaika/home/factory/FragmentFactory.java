@@ -1,10 +1,12 @@
 package com.smona.app.guaika.home.factory;
 
 import android.os.Bundle;
+import android.util.Log;
 
+import com.smona.app.guaika.category.fragment.CategoryFragment;
 import com.smona.app.guaika.main.bean.TabData;
-import com.smona.app.guaika.common.BaseFragment;
-import com.smona.app.guaika.home.fragment.HomeVideoFragment;
+import com.smona.app.guaika.common.fragment.BaseFragment;
+import com.smona.app.guaika.home.fragment.HomeFragment;
 import com.smona.app.guaika.main.fragment.TabFragment;
 import com.smona.app.guaika.main.http.DataType;
 
@@ -15,14 +17,15 @@ public class FragmentFactory {
         return new TabFragment();
     }
 
-    public static BaseFragment createFragment(DataType type, TabData tabItem) {
+    public static BaseFragment createFragment(TabData tabItem) {
         BaseFragment fragment = null;
+        DataType type = tabItem.getType();
         switch (type) {
             case HOME:
-                fragment = new HomeVideoFragment();
+                fragment = new HomeFragment();
                 break;
             case CATEGORY:
-                fragment = new HomeVideoFragment();
+                fragment = new CategoryFragment();
                 break;
         }
 

@@ -12,17 +12,14 @@ import java.util.List;
 
 public class TabAdapter extends FragmentPagerAdapter {
     private List<TabData> mList;
-    private DataType mType;
-
     public TabAdapter(FragmentManager fm, List<TabData> list, DataType type) {
         super(fm);
         this.mList = list;
-        this.mType = type;
     }
 
     @Override
     public Fragment getItem(int position) {
-        return FragmentFactory.createFragment(mType, getItemData(position));
+        return FragmentFactory.createFragment(getItemData(position));
     }
 
     @Override

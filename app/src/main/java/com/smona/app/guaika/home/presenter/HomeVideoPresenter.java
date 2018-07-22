@@ -2,7 +2,7 @@ package com.smona.app.guaika.home.presenter;
 
 import com.smona.app.guaika.main.bean.IFengInfo;
 import com.smona.app.guaika.main.bean.TabData;
-import com.smona.app.guaika.home.factory.RetrofitFactory;
+import com.smona.app.guaika.home.factory.HomeRetrofitFactory;
 import com.smona.app.guaika.main.http.DataType;
 import com.smona.app.guaika.util.DBManager;
 import com.smona.app.guaika.util.DataKeeper;
@@ -22,12 +22,12 @@ public class HomeVideoPresenter extends VideoPresenter {
     public Observable<String> getHttpCallObservable(int curPage) {
         DataKeeper.saveCurrentTabId(mTab.getTabId());
         if (curPage == 1) {
-            return RetrofitFactory.getVideoService().refreshVideos(mTab.getTabId(), REFRESH_SIZE, String.valueOf(System.currentTimeMillis()));
+            return HomeRetrofitFactory.getVideoService().refreshVideos(mTab.getTabId(), REFRESH_SIZE, String.valueOf(System.currentTimeMillis()));
         } else if (curPage == 2) {
-            return RetrofitFactory.getVideoService().refreshVideos(mTab.getTabId(), LOADMORE_SIZE, "");
+            return HomeRetrofitFactory.getVideoService().refreshVideos(mTab.getTabId(), LOADMORE_SIZE, "");
         } else {
             IFengInfo info = DBManager.getInstance().getSQLiteDB().queryOne(IFengInfo.class, "tabId=?", new String[]{String.valueOf(mTab.getTabId())});
-            return RetrofitFactory.getVideoService().loadMoreVideos(mTab.getTabId(), LOADMORE_SIZE, info.getItemId());
+            return HomeRetrofitFactory.getVideoService().loadMoreVideos(mTab.getTabId(), LOADMORE_SIZE, info.getItemId());
         }
     }
 

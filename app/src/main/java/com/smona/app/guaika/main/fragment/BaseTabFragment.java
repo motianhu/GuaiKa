@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.smona.app.guaika.R;
-import com.smona.app.guaika.common.BaseFragment;
+import com.smona.app.guaika.common.fragment.BaseFragment;
 import com.smona.app.guaika.main.adapter.TabAdapter;
 import com.smona.app.guaika.main.bean.TabData;
 import com.smona.app.guaika.main.mvpview.VideoTabMvpView;

@@ -1,25 +1,27 @@
 package com.smona.app.guaika.main.bean;
 
+import com.smona.app.guaika.main.http.DataType;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 public class TabData implements Serializable {
-    private int type;
+    private DataType dataType;
     private int tabId;
     private String tabName;
 
-    public TabData(int tabId, String tabName, int type) {
+    public TabData(int tabId, String tabName, DataType type) {
         this.tabId = tabId;
         this.tabName = tabName;
-        this.type = type;
+        this.dataType = type;
     }
 
     public static List<TabData> createTabDatas() {
         List<TabData> tabs = new ArrayList<TabData>();
-        TabData tabData = new TabData(20, "首页", 20);
+        TabData tabData = new TabData(26, "首页", DataType.HOME);
         tabs.add(tabData);
-        tabData = new TabData(26, "分类", 26);
+        tabData = new TabData(2, "分类", DataType.CATEGORY);
         tabs.add(tabData);
         return tabs;
     }
@@ -32,7 +34,7 @@ public class TabData implements Serializable {
         return tabName;
     }
 
-    public int getType() {
-        return type;
+    public DataType getType(){
+        return dataType;
     }
 }

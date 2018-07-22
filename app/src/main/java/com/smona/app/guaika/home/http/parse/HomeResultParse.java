@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class IFengTabResultParse implements ResultParse {
+public class HomeResultParse implements ResultParse {
     private static final String KEY_TAB_LIST = "channelInfo";
     private static final String KEY_TAB_ID = "channelId";
     private static final String KEY_TAB_NAME = "channelName";

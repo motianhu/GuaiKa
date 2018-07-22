@@ -1,6 +1,6 @@
-package com.smona.app.guaika.home.factory;
+package com.smona.app.guaika.category.factory;
 
-import com.smona.app.guaika.home.http.service.IFengApi;
+import com.smona.app.guaika.category.http.service.CategoryApi;
 
 import java.util.concurrent.TimeUnit;
 
@@ -10,24 +10,24 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
-public class RetrofitFactory {
+public class CategoryRetrofitFactory {
 
     private static final int TIME_OUT = 12;//超时时间
-    private static final String IFENG_BASE_URL = "http://vcis.ifeng.com/";
-    private static volatile IFengApi sIFengService;
+    private static final String NETEASY_BASE_URL = "http://c.m.163.com/";
+    private static volatile CategoryApi sNetEasyService;
 
-    public static IFengApi getVideoService() {
-        if (sIFengService == null) {
-            synchronized (RetrofitFactory.class) {
-                if (sIFengService == null) {
-                    sIFengService = createService();
+    public static CategoryApi getCatgoryService() {
+        if(sNetEasyService == null) {
+            synchronized (CategoryRetrofitFactory.class) {
+                if(sNetEasyService == null) {
+                    sNetEasyService = createCategoryService();
                 }
             }
         }
-        return sIFengService;
+        return sNetEasyService;
     }
 
-    private static IFengApi createService() {
+    private static CategoryApi createCategoryService() {
         OkHttpClient client = new OkHttpClient.Builder()
                 .connectTimeout(TIME_OUT, TimeUnit.SECONDS)
                 .readTimeout(TIME_OUT, TimeUnit.SECONDS)
@@ -37,11 +37,11 @@ public class RetrofitFactory {
                 .build();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(IFENG_BASE_URL)
+                .baseUrl(NETEASY_BASE_URL)
                 .client(client)
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();
-        return retrofit.create(IFengApi.class);
+        return retrofit.create(CategoryApi.class);
     }
 }

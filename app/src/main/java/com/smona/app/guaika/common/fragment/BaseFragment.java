@@ -1,4 +1,4 @@
-package com.smona.app.guaika.common;
+package com.smona.app.guaika.common.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
