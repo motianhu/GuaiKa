@@ -1,8 +1,7 @@
 package com.smona.app.guaika.more.presenter;
 
-import com.smona.app.guaika.home.presenter.VideoPresenter;
 import com.smona.app.guaika.main.http.DataType;
-import com.smona.app.guaika.more.factory.CategoryRetrofitFactory;
+import com.smona.app.guaika.more.factory.MoreRetrofitFactory;
 
 import rx.Observable;
 
@@ -12,7 +11,7 @@ public class MorePresenter extends AbsMorePresenter {
     @Override
     public Observable<String> getHttpCallObservable(int curPage) {
         int offset = (curPage - 1) * PAGE_SIZE;
-        return CategoryRetrofitFactory.getCatgoryService().getVideos(PAGE_SIZE, offset);
+        return MoreRetrofitFactory.getCatgoryService().getVideos(PAGE_SIZE, offset);
     }
 
     @Override

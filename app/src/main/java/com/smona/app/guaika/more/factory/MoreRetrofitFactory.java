@@ -10,7 +10,7 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
-public class CategoryRetrofitFactory {
+public class MoreRetrofitFactory {
 
     private static final int TIME_OUT = 12;//超时时间
     private static final String NETEASY_BASE_URL = "http://c.m.163.com/";
@@ -18,7 +18,7 @@ public class CategoryRetrofitFactory {
 
     public static MoreApi getCatgoryService() {
         if(sNetEasyService == null) {
-            synchronized (CategoryRetrofitFactory.class) {
+            synchronized (MoreRetrofitFactory.class) {
                 if(sNetEasyService == null) {
                     sNetEasyService = createCategoryService();
                 }

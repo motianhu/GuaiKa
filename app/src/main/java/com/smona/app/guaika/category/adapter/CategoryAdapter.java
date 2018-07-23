@@ -14,6 +14,7 @@ import com.smona.app.guaika.activity.CategoryActivity;
 import com.smona.app.guaika.common.ui.recycler.HeaderAndFooterAdapter;
 import com.smona.app.guaika.common.ui.recycler.ViewHolder;
 import com.smona.app.guaika.home.bean.VideoData;
+import com.smona.app.guaika.util.UIUtil;
 
 import java.util.List;
 
@@ -58,9 +59,7 @@ public class CategoryAdapter extends HeaderAndFooterAdapter<VideoData> {
         videoViewHolder.mMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(mContext, CategoryActivity.class);
-                mContext.startActivity(intent);
+                UIUtil.gotoSetting(mContext);
             }
         });
     }

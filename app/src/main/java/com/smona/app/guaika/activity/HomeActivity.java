@@ -11,6 +11,7 @@ import com.smona.app.guaika.R;
 import com.smona.app.guaika.home.factory.FragmentFactory;
 import com.smona.app.guaika.common.fragment.BaseFragment;
 import com.smona.app.guaika.common.fragment.NameFragment;
+import com.smona.app.guaika.util.UIUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -51,9 +52,6 @@ public class HomeActivity extends BaseActivity implements  View.OnClickListener 
     }
 
     private void gotoSettings() {
-        Intent setting = new Intent();
-        setting.setClass(this, SettingActivity.class);
-        startActivity(setting);
-
+        UIUtil.gotoSetting(this);
     }
 }
