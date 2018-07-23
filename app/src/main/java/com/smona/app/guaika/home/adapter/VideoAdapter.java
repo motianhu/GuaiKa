@@ -1,7 +1,6 @@
 package com.smona.app.guaika.home.adapter;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +12,7 @@ import com.smona.app.guaika.R;
 import com.smona.app.guaika.common.ui.recycler.HeaderAndFooterAdapter;
 import com.smona.app.guaika.common.ui.recycler.ViewHolder;
 import com.smona.app.guaika.home.bean.VideoData;
-import com.smona.app.guaika.util.DisplayManager;
+import com.smona.app.guaika.util.UIUtil;
 
 import java.util.List;
 
@@ -47,6 +46,13 @@ public class VideoAdapter extends HeaderAndFooterAdapter<VideoData> {
         videoViewHolder.mAuthor.setText(item.getAuthor());
         videoViewHolder.mLike.setText(item.getLikeCount() + "");
         videoViewHolder.mDuration.setText(item.getDuration());
+
+        videoViewHolder.mImageView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                UIUtil.gotoVideo(mContext);
+            }
+        });
     }
 
 
