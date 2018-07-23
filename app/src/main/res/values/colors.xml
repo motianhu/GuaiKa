@@ -5,9 +5,10 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="setting_menu_bg">#fafafa</color>
-    <drawable name="gray">#e3e3e3</drawable>
+    <color name="gray">#e3e3e3</color>
     <color name="setting_menu_text">#cc000000</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="setting_dividing_line_color">#33828282</color>
+    <color name="trans_sixty">#60ffffff</color>
 </resources>

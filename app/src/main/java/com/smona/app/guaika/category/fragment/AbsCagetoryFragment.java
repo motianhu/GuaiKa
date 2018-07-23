@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import com.smona.app.guaika.R;
+import com.smona.app.guaika.category.adapter.CategoryAdapter;
 import com.smona.app.guaika.common.fragment.BaseFragment;
 import com.smona.app.guaika.common.ui.recycler.CommonRecyclerView;
 import com.smona.app.guaika.common.ui.recycler.SpacesItemDecoration;
@@ -32,7 +33,7 @@ public abstract class AbsCagetoryFragment extends
     CommonRecyclerView mRecyclerView;
 
     private View mFooterView;
-    private VideoAdapter mVideoAdapter;
+    private CategoryAdapter mVideoAdapter;
 
     @Override
     public View getContentView(LayoutInflater inflater, @Nullable Bundle savedInstanceState) {
@@ -76,7 +77,7 @@ public abstract class AbsCagetoryFragment extends
     @Override
     public void setData(List<VideoData> data) {
         if (mVideoAdapter == null) {
-            mVideoAdapter = new VideoAdapter(mContext, data);
+            mVideoAdapter = new CategoryAdapter(mContext, data);
             mVideoAdapter.enableFooterView();
             mFooterView = LayoutInflater.from(mContext).inflate(R.layout.footer_layout, mRecyclerView, false);
             mVideoAdapter.addFooterView(mFooterView);
