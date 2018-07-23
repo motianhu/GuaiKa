@@ -1,6 +1,7 @@
 package com.smona.app.guaika.category.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.smona.app.guaika.R;
+import com.smona.app.guaika.activity.CategoryActivity;
 import com.smona.app.guaika.common.ui.recycler.HeaderAndFooterAdapter;
 import com.smona.app.guaika.common.ui.recycler.ViewHolder;
 import com.smona.app.guaika.home.bean.VideoData;
@@ -52,6 +54,15 @@ public class CategoryAdapter extends HeaderAndFooterAdapter<VideoData> {
                 .error(R.drawable.video_image_place_holder)
                 .into(videoViewHolder.mRightImg);
         videoViewHolder.mRightTitle.setText(item.getTitle());
+
+        videoViewHolder.mMore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(mContext, CategoryActivity.class);
+                mContext.startActivity(intent);
+            }
+        });
     }
 
     class VideoViewHolder extends ViewHolder {
@@ -69,6 +80,9 @@ public class CategoryAdapter extends HeaderAndFooterAdapter<VideoData> {
 
         @BindView(R.id.category_more)
         View mCateogryMore;
+
+        @BindView(R.id.more)
+        View mMore;
 
         VideoViewHolder(View itemView) {
             super(itemView);

@@ -15,7 +15,7 @@ import java.util.List;
 
 public class ResultParseFactory {
 
-    public static ResultParse create(DataType type) {
+    private static ResultParse create(DataType type) {
         ResultParse parse = null;
         switch (type) {
             case HOME:
