@@ -3,21 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:fitsSystemWindows="true"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context=".activity.CategoryActivity">
 
-        <cn.ittiger.player.VideoPlayerView
-            android:id="@+id/video_player_view"
-            android:layout_width="match_parent"
-            android:layout_height="240dp"/>
-
-
-    <RelativeLayout
-        android:id="@+id/content_main"
+    <cn.ittiger.player.VideoPlayerView
+        android:id="@+id/video_player_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="240dp" />
 
-    </RelativeLayout>
+    <include
+        layout="@layout/activity_main_content"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/video_player_view" />
 
 </android.support.constraint.ConstraintLayout>

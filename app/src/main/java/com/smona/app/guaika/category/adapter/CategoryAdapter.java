@@ -59,7 +59,7 @@ public class CategoryAdapter extends HeaderAndFooterAdapter<VideoData> {
         videoViewHolder.mMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UIUtil.gotoSetting(mContext);
+                UIUtil.gotoCategory(mContext);
             }
         });
     }

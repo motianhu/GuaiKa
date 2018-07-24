@@ -2,11 +2,16 @@ package com.smona.app.guaika.activity;
 
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.smona.app.guaika.R;
+import com.smona.app.guaika.common.fragment.BaseFragment;
+import com.smona.app.guaika.common.fragment.NameFragment;
 import com.smona.app.guaika.home.bean.VideoData;
+import com.smona.app.guaika.home.factory.FragmentFactory;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -22,6 +27,7 @@ public class VideoActivity extends BaseActivity {
         setContentView(R.layout.activity_video);
         ButterKnife.bind(this);
         playVideo();
+        initRecommend();
     }
 
     private void playVideo() {
@@ -35,5 +41,17 @@ public class VideoActivity extends BaseActivity {
                 .placeholder(R.drawable.video_image_place_holder)
                 .error(R.drawable.video_image_place_holder)
                 .into(mVideoPlayerView.getThumbImageView());
+    }
+
+    private void initRecommend() {
+        BaseFragment fragment = FragmentFactory.createRecomendFragment();
+        switchFragment(fragment);
+    }
+
+    private void switchFragment(Fragment fragment) {
+        setTitle(((NameFragment) fragment).getName());
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.content_main, fragment);
+        fragmentTransaction.commit();
     }
 }

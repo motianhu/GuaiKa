@@ -10,6 +10,7 @@ import com.smona.app.guaika.home.fragment.HomeFragment;
 import com.smona.app.guaika.main.fragment.TabFragment;
 import com.smona.app.guaika.main.http.DataType;
 import com.smona.app.guaika.more.fragment.MoreFragment;
+import com.smona.app.guaika.video.fragment.RecommendFragment;
 
 public class FragmentFactory {
     public static final String KEY_BUNDLE_TAB_ITEM = "tab_item";
@@ -41,6 +42,15 @@ public class FragmentFactory {
 
     public static BaseFragment createCategoryFragment() {
         BaseFragment fragment = new MoreFragment();
+        Bundle bundle = new Bundle();
+        if (fragment != null) {
+            fragment.setArguments(bundle);
+        }
+        return fragment;
+    }
+
+    public static BaseFragment createRecomendFragment() {
+        BaseFragment fragment = new RecommendFragment();
         Bundle bundle = new Bundle();
         if (fragment != null) {
             fragment.setArguments(bundle);
